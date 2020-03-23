@@ -34,8 +34,9 @@
     任务指派，M先生
     
 ### 图片
-    ![Image text](img/queryLoanContractInfoList.png)    
-    ![Image text](img/addD.png)    
-    ![Image text](img/addD.png)   
-    ![Alt text](img/queryLoanContractInfoList.png)	
-	![avatar](img/addD.png)   
+
+![Image text](img/queryLoanContractInfoList.png)    
+![Image text](img/addD.png)    
+![Image text](img/addD.png)   
+![Alt text](img/queryLoanContractInfoList.png)	
+![avatar](img/addD.png)   
