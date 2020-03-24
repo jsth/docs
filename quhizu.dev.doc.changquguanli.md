@@ -1,16 +1,19 @@
-### 说明-厂区信息管理 
+### 说明-厂区信息管理 基于 工作单位管理 加字段
      * 文档与原型结合一起阅读，如果不一致，以文档为准，如果有问题请call me*
      * 需求原型地址 http://zbox.quhizu.com/zentao/story-view-16.html *
+	 
+	 厂区信息管理基于工作单位管理加字段（commonAddressManage）；
+	 
      厂区信息管理：
-     厂区列表，名称和企业编码查询；
-     厂区新增（企业编码唯一）；
+     厂区列表，；
+     厂区新增（）；
      厂区详情；
-     厂区修改（企业编码不能修改）；
+     厂区修改（）；
      厂区删除（确认删除提示）；
      
 
-###  新增“厂区信息表”
-     企业编号  enterprise code
+###  新增“厂区信息”
+     
      企业名称  
      企业经营地址 
      企业官网 
@@ -23,27 +26,27 @@
      厂区地图      (上传图片保存地址)
      备注
      信息收集人员姓名
+	 状态 (1.待完善,2.已完善：所有字段全部填完不为空，不为空白;默认1;)
      
 ### 建表语句 DDL   
 ```sql
 
-CREATE TABLE `industrial_zone` (
-  `enterprise_code` varchar(64) NOT NULL COMMENT '企业编号',
-  `enterprise_name` varchar(255) NOT NULL COMMENT '企业名称',
-  `enterprise_address` varchar(255) DEFAULT NULL COMMENT '企业经营地址',
-  `enterprise_website` varchar(255) DEFAULT NULL COMMENT '企业官网',
-  `enterprise_phone` varchar(255) DEFAULT NULL COMMENT '企业电话',
-  `lng` double(11,6) DEFAULT NULL COMMENT '经度lng  (6位小数)',
-  `lat` double(11,6) DEFAULT NULL COMMENT '纬度lat  (6位小数)',
-  `enterprise_profile` varchar(1000) DEFAULT NULL COMMENT '企业简介',
-  `recruitment_info` varchar(255) DEFAULT NULL COMMENT '招聘信息 图片地址',
-  `enterprise_photo` varchar(255) DEFAULT NULL COMMENT '厂区照片',
-  `enterprise_map` varchar(255) DEFAULT NULL COMMENT '厂区地图',
-  `note` varchar(255) DEFAULT NULL COMMENT '备注',
-  `collector_name` varchar(20) DEFAULT NULL COMMENT '信息收集人员姓名',
-  PRIMARY KEY (`enterprise_code`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='工业园区';
-
+	ALTER TABLE  `common_address`    
+	ADD COLUMN  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '状态 (1.待完善,2.已完善：所有字段全部填完不为空，不为空白;默认1;)',
+	ADD COLUMN  `enterprise_name` varchar(255) NOT NULL COMMENT '企业名称',
+	ADD COLUMN  `enterprise_address` varchar(255) DEFAULT NULL COMMENT '企业经营地址',
+	ADD COLUMN  `enterprise_website` varchar(255) DEFAULT NULL COMMENT '企业官网',
+	ADD COLUMN  `enterprise_phone` varchar(255) DEFAULT NULL COMMENT '企业电话',
+	ADD COLUMN  `lng` double(11,6) DEFAULT NULL COMMENT '经度lng  (6位小数)',
+	ADD COLUMN  `lat` double(11,6) DEFAULT NULL COMMENT '纬度lat  (6位小数)',
+	ADD COLUMN  `enterprise_profile` varchar(1000) DEFAULT NULL COMMENT '企业简介',
+	ADD COLUMN  `recruitment_info` varchar(255) DEFAULT NULL COMMENT '招聘信息 图片地址',
+	ADD COLUMN  `enterprise_photo` varchar(255) DEFAULT NULL COMMENT '厂区照片',
+	ADD COLUMN  `enterprise_map` varchar(255) DEFAULT NULL COMMENT '厂区地图',
+	ADD COLUMN  `note` varchar(255) DEFAULT NULL COMMENT '备注',
+	ADD COLUMN  `collector_name` varchar(20) DEFAULT NULL COMMENT '信息收集人员姓名';
+  
+  
 ```   
      
 
