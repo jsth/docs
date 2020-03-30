@@ -9,16 +9,13 @@
 **联系人**:
 
 **接口路径**：/v2/api-docs
-
-
-# wap-controller
-    
-## getAllEntity
+# open-controller
+## 招聘列表
 
 **接口说明**:
 
 
-**接口地址**:`/p/RecruitInfo`
+**接口地址**:`/open/RecruitInfo`
 
 
 **请求方式**：`get`
@@ -76,7 +73,7 @@
 |company_name| 公司名称  |string  |    |
 |district| 区县  |string  |    |
 |education| 最低学历:0不限，1初中， 2中专/高中，3大专，4本科，5硕士  |integer  |    |
-|label| 标签：岗位标签最多5个:普工|车间|搬运|叉车|电工|焊工|维修|木工|组装|电器  |string  |    |
+|label| 标签：岗位标签最多5个:普工-车间-搬运-叉车-电工-焊工-维修-木工-组装-电器  |string  |    |
 |lat| 维度  |number  |    |
 |lng| 精度  |number  |    |
 |money_str| 薪资预算文本：3000-5000/月,100-200/天,10-20/小时  |string  |    |
@@ -102,12 +99,185 @@
 
         
     
-## visit
+## 获取配置列表
 
 **接口说明**:
 
 
-**接口地址**:`/p/RecruitInfo/{id}`
+**接口地址**:`/open/SysConfig`
+
+
+**请求方式**：`get`
+
+
+**consumes**:``
+
+
+**produces**:`["*/*"]`
+
+**请求参数**：
+暂无
+**响应数据**:
+
+```json
+[
+    {
+        "appkey": "",
+        "enable": 0,
+        "extra": "",
+        "id": 0,
+        "note": "",
+        "skey": "",
+        "svalue": ""
+    }
+]
+```
+**响应参数说明**:
+
+| 参数名称         | 说明                             |    类型 |  schema |
+| ------------ | -------------------|-------|----------- |
+|appkey| 应用标记  |string  |    |
+|enable| 使能：1正常，0.关闭  |integer  |    |
+|extra| 附加值  |string  |    |
+|id| 时序id  |integer  |    |
+|note| 备注说明  |string  |    |
+|skey| 配置key  |string  |    |
+|svalue| 配置value  |string  |    |
+
+
+**响应状态码说明**:
+
+| 状态码         | 说明                             |    schema                         |
+| ------------ | -------------------------------- |---------------------- |
+| 200 | OK  |SysConfig对象|
+                | 401 | Unauthorized  ||
+                | 403 | Forbidden  ||
+                | 404 | Not Found  ||
+                
+
+        
+    
+## 获取配置
+
+**接口说明**:
+
+
+**接口地址**:`/open/SysConfig/{id}`
+
+
+**请求方式**：`get`
+
+
+**consumes**:``
+
+
+**produces**:`["*/*"]`
+
+**请求参数**：
+
+| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| ------------ | -------------------------------- |-----------|--------|----|--- |
+|id| id  | path | true |string  |    |
+                
+
+**响应数据**:
+
+```json
+{
+    "appkey": "",
+    "enable": 0,
+    "extra": "",
+    "id": 0,
+    "note": "",
+    "skey": "",
+    "svalue": ""
+}
+```
+**响应参数说明**:
+
+| 参数名称         | 说明                             |    类型 |  schema |
+| ------------ | -------------------|-------|----------- |
+|appkey| 应用标记  |string  |    |
+|enable| 使能：1正常，0.关闭  |integer  |    |
+|extra| 附加值  |string  |    |
+|id| 时序id  |integer  |    |
+|note| 备注说明  |string  |    |
+|skey| 配置key  |string  |    |
+|svalue| 配置value  |string  |    |
+
+
+**响应状态码说明**:
+
+| 状态码         | 说明                             |    schema                         |
+| ------------ | -------------------------------- |---------------------- |
+| 200 | OK  |SysConfig对象|
+                | 401 | Unauthorized  ||
+                | 403 | Forbidden  ||
+                | 404 | Not Found  ||
+                
+
+        
+    
+## 手机号快捷登录
+
+**接口说明**:手机号快捷登录,返回用户ID
+
+
+**接口地址**:`/open/UserIdByPhone/{phone}`
+
+
+**请求方式**：`get`
+
+
+**consumes**:``
+
+
+**produces**:`["*/*"]`
+
+**请求参数**：
+
+| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
+| ------------ | -------------------------------- |-----------|--------|----|--- |
+|phone| phone  | path | true |string  |    |
+                
+
+**响应数据**:
+
+```json
+
+```
+**响应参数说明**:
+
+暂无
+
+
+**响应状态码说明**:
+
+| 状态码         | 说明                             |    schema                         |
+| ------------ | -------------------------------- |---------------------- |
+| 200 | OK  ||
+                | 401 | Unauthorized  ||
+                | 403 | Forbidden  ||
+                | 404 | Not Found  ||
+                
+
+        
+    
+    
+    
+    
+    
+# wap-controller
+    
+    
+    
+    
+## 浏览招聘详情
+
+**接口说明**:
+
+
+**接口地址**:`/wap/RecruitInfo/{id}`
 
 
 **请求方式**：`get`
@@ -214,7 +384,7 @@
                 |company_name | 公司名称   |string  |    |
                 |district | 区县   |string  |    |
                 |education | 最低学历:0不限，1初中， 2中专/高中，3大专，4本科，5硕士   |integer  |    |
-                |label | 标签：岗位标签最多5个:普工|车间|搬运|叉车|电工|焊工|维修|木工|组装|电器   |string  |    |
+                |label | 标签：岗位标签最多5个:普工-车间-搬运-叉车-电工-焊工-维修-木工-组装-电器   |string  |    |
                 |lat | 维度   |number  |    |
                 |lng | 精度   |number  |    |
                 |money_str | 薪资预算文本：3000-5000/月,100-200/天,10-20/小时   |string  |    |
@@ -240,12 +410,12 @@
 
         
     
-## apply
+## 申请职位
 
 **接口说明**:
 
 
-**接口地址**:`/p/RecruitInfo/{id}/apply`
+**接口地址**:`/wap/RecruitInfo/{id}/apply`
 
 
 **请求方式**：`put`
@@ -276,7 +446,6 @@
 
 **响应状态码说明**:
 
-
 | 状态码         | 说明                             |    schema                         |
 | ------------ | -------------------------------- |---------------------- |
 | 200 | OK  ||
@@ -288,57 +457,12 @@
 
         
     
-## UserIdByPhone
+## 保存用户简历
 
 **接口说明**:
 
 
-**接口地址**:`/p/UserIdByPhone/{phone}`
-
-
-**请求方式**：`get`
-
-
-**consumes**:``
-
-
-**produces**:`["*/*"]`
-
-**请求参数**：
-
-| 参数名称         | 说明     |     in |  是否必须      |  类型   |  schema  |
-| ------------ | -------------------------------- |-----------|--------|----|--- |
-|phone| phone  | path | true |string  |    |
-                
-
-**响应数据**:
-
-```json
-
-```
-**响应参数说明**:
-
-暂无
-
-
-**响应状态码说明**:
-
-| 状态码         | 说明                             |    schema                         |
-| ------------ | -------------------------------- |---------------------- |
-| 200 | OK  ||
-                | 401 | Unauthorized  ||
-                | 403 | Forbidden  ||
-                | 404 | Not Found  ||
-                
-
-        
-    
-## saveOrUpdateEntityUserResume
-
-**接口说明**:
-
-
-**接口地址**:`/p/UserResume`
+**接口地址**:`/wap/UserResume`
 
 
 **请求方式**：`post`
@@ -428,12 +552,12 @@
 
         
     
-## getEntityByIdUserResume
+## 获取用户简历
 
 **接口说明**:
 
 
-**接口地址**:`/p/UserResume/{id}`
+**接口地址**:`/wap/UserResume/{id}`
 
 
 **请求方式**：`get`
